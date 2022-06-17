@@ -1,0 +1,10 @@
+Key Prop
+https://kentcdodds.com/blog/understanding-reacts-key-prop
+https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js/43892905#43892905
+
+Flex - WEB
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://www.youtube.com/watch?v=_s15i3MoAyE
+https://flexboxfroggy.com/
+
+
