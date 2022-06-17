@@ -4,6 +4,7 @@ import ListSample from './src/ComponentSample/ListSample'
 import FlatListSample from './src/CoreComponents/FlatListSample'
 import ImgSample from './src/CoreComponents/ImgSample'
 import SectionListSample from './src/CoreComponents/SectionListSample'
+import ParentComp from './src/PropSample/ParentComp'
 import FlexSample from './src/ReactNativeStyling/FlexSample'
 import TemplateSample from './src/ReactNativeStyling/template1/TemplateSample'
 
@@ -12,7 +13,7 @@ import TemplateSample from './src/ReactNativeStyling/template1/TemplateSample'
 const App = () => {
 
   return (<SafeAreaView style={{flex:1}}>
-    <TemplateSample />
+    <ParentComp/>
   </SafeAreaView>)
 
 }
