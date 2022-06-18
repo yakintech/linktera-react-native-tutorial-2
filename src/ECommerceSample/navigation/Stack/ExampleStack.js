@@ -6,6 +6,7 @@ import ArrayStateSampleScreen from '../Screens/examples/ArrayStateSampleScreen';
 import InputStateSampleScreen from '../Screens/examples/InputStateSampleScreen';
 import ElementsListSampleScreen from '../Screens/examples/ElementsListSampleScreen';
 import CardSampleScreen from '../Screens/examples/CardSampleScreen';
+import PaperDialogSampleScreen from '../Screens/examples/PaperDialogSampleScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,12 @@ const ExampleStack = () => {
 
     return (
         <Stack.Navigator>
+
+            <Stack.Screen
+                name="PaperDialogSample"
+                component={PaperDialogSampleScreen}
+            />
+
 
             <Stack.Screen
                 name="ElementsListSample"
