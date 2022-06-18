@@ -1,15 +1,17 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
 import { View, Text, SafeAreaView } from 'react-native'
-import AboutScreen from './src/NavigationSample/AboutScreen';
-import CategoryDetailScreen from './src/NavigationSample/CategoryDetailScreen';
-import CategoryListScreen from './src/NavigationSample/CategoryListScreen';
-import ContactScreen from './src/NavigationSample/ContactScreen';
-import HomeScreen from './src/NavigationSample/HomeScreen';
+import CartStack from './src/ECommerceSample/navigation/Stack/CartStack';
+import NotificationStack from './src/ECommerceSample/navigation/Stack/NotificationStack';
+import ProfileStack from './src/ECommerceSample/navigation/Stack/ProfileStack';
 //SafeAreaView IOS uygulamalar özel bir component!
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ExampleStack from './src/ECommerceSample/navigation/Stack/ExampleStack';
 
-const Stack = createNativeStackNavigator();
+
+const Tab = createBottomTabNavigator();
+
 
 const App = () => {
 
@@ -17,41 +19,54 @@ const App = () => {
 
     <NavigationContainer>
       <SafeAreaView style={{ flex: 1 }}>
-
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
+        <Tab.Navigator>
+          <Tab.Screen
+            name="Notification"
+            component={NotificationStack}
             options={
               {
-                headerTitle: 'Anasayfa',
-                headerStyle: {
-                  // backgroundColor:'tomato'
-                }
+                headerShown: false,
+                tabBarIcon: () => <Ionicons size={26} name='notifications-outline' />
+              }
+            }
+
+          />
+          <Tab.Screen
+            name="Cart"
+            component={CartStack}
+            options={
+              {
+                headerShown: false,
+                tabBarIcon: () => <Ionicons size={26} name='cart-outline' />
+
               }
             }
           />
-          <Stack.Screen name="About"
-            component={AboutScreen}
+          <Tab.Screen
+            name="Profile"
+            component={ProfileStack}
             options={
               {
-                headerBackTitle:'Geri',
+                headerShown: false,
+                tabBarIcon: () => <Ionicons size={26} name='person-outline' />
+
               }
             }
           />
-          <Stack.Screen name="Contact" component={ContactScreen} />
-          <Stack.Screen name="CategoryList" component={CategoryListScreen} />
-          <Stack.Screen 
-          name="CategoryDetail"
-          component={CategoryDetailScreen}
-          options={({ route }) => ({
-            // headerTitle: () => <Text>{route.params.name}</Text>
-            headerTitle: route.params.name
 
-            
-          })}
-            />
-        </Stack.Navigator>
+          <Tab.Screen
+            name="Example"
+            component={ExampleStack}
+            options={
+              {
+                headerShown: false,
+                tabBarIcon: () => <Ionicons size={26} name='book-outline' />
+
+              }
+            }
+          />
+        </Tab.Navigator>
+
       </SafeAreaView>
     </NavigationContainer>
 
