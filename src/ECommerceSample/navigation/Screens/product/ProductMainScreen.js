@@ -1,10 +1,12 @@
 import { View, Text, ScrollView } from 'react-native'
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { ActivityIndicator, Button, List } from 'react-native-paper'
+import { cartContext } from '../../../store/cartContext'
 
 const ProductMainScreen = ({ navigation }) => {
 
+    const { cart, setCart } = useContext(cartContext)
     const [products, setProducts] = useState([])
     const [loading, setloading] = useState(false)
     //Web servisten productları axios ile çekip bir state e atayacağım.
@@ -38,6 +40,35 @@ const ProductMainScreen = ({ navigation }) => {
     }
 
 
+    //Bu fonksiyon ile global state i güncelleyeceğiz
+
+    const addToCart = (item) => {
+
+        //Sepette ürün var mı onu kontrol ediyorum.
+
+        let cartProduct = cart.find(q => q.id == item.id);
+
+        if (cartProduct) {
+            //ürün sepette varsa ürünün sepetteki adedi bir arttırılır.
+
+            cartProduct.quantity = cartProduct.quantity + 1;
+            setCart([...cart])
+
+        }
+        else {
+
+            let newCartProduct = {
+                id: item.id,
+                quantity: 1,
+                name: item.name,
+                unitPrice: item.unitPrice
+            }
+
+            setCart([...cart, newCartProduct]);
+        }
+
+    }
+
 
     return (
         <ScrollView>
@@ -54,7 +85,7 @@ const ProductMainScreen = ({ navigation }) => {
                     />
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                             <Button icon='delete' onPress={() => deleteProduct(item.id)}>Delete</Button>
-                            <Button icon='cart' onPress={() => deleteCategory(item.id)}>Add To Cart</Button>
+                            <Button icon='cart' onPress={() => addToCart(item)}>Add To Cart</Button>
                         </View>
 
 

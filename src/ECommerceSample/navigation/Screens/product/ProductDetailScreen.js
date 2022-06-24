@@ -1,12 +1,15 @@
 import { View, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { ActivityIndicator, Avatar, Button, Card, TextInput, Title } from 'react-native-paper';
+import { cartContext } from '../../../store/cartContext';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="hamburger" />
 
 
 const ProductDetailScreen = ({ route }) => {
+
+    const {cart, setCart} = useContext(cartContext)
 
     const [loading, setLoading] = useState(true);
     const [detail, setDetail] = useState({});
@@ -24,7 +27,30 @@ const ProductDetailScreen = ({ route }) => {
 
     }, [])
 
+    const addtoCart = (item) => {
+        let cartProduct = cart.find(q => q.id == item.id);
 
+        if (cartProduct) {
+            //ürün sepette varsa ürünün sepetteki adedi bir arttırılır.
+
+            cartProduct.quantity = cartProduct.quantity + count;
+            setCart([...cart])
+
+        }
+        else {
+
+            let newCartProduct = {
+                id: item.id,
+                quantity: count,
+                name: item.name,
+                unitPrice: item.unitPrice
+            }
+
+            setCart([...cart, newCartProduct]);
+        }
+
+    }
+    
     return (
         <>
             {
@@ -44,7 +70,7 @@ const ProductDetailScreen = ({ route }) => {
                         />
                     <Card.Actions>
                        
-                        <Button icon='cart'>Add to cart</Button>
+                        <Button onPress={() => addtoCart(detail)} icon='cart'>Add to cart</Button>
                     </Card.Actions>
                 </Card> : <ActivityIndicator animating={loading} color='red' />
 
