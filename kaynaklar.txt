@@ -18,4 +18,12 @@ React Native UI Libraries
 * React Native Paper
 
 
+WEB API
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+
+
+
 

@@ -7,6 +7,7 @@ const PaperDialogSampleScreen = () => {
   const [visible, setvisible] = useState(false)
 
 
+
   return (
     <>
 <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>

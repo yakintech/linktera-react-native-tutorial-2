@@ -7,6 +7,9 @@ import InputStateSampleScreen from '../Screens/examples/InputStateSampleScreen';
 import ElementsListSampleScreen from '../Screens/examples/ElementsListSampleScreen';
 import CardSampleScreen from '../Screens/examples/CardSampleScreen';
 import PaperDialogSampleScreen from '../Screens/examples/PaperDialogSampleScreen';
+import CategoryListScreen from '../Screens/examples/APISample/CategoryListScreen';
+import CategoryDetailScreen from '../Screens/examples/APISample/CategoryDetailScreen';
+import CategoryAddScreen from '../Screens/examples/APISample/CategoryAddScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +17,23 @@ const ExampleStack = () => {
 
     return (
         <Stack.Navigator>
+
+            <Stack.Screen
+                name="CategoryAddSample"
+                component={CategoryAddScreen}
+            />
+
+
+            <Stack.Screen
+                name="CategoryListSample"
+                component={CategoryListScreen}
+            />
+
+
+            <Stack.Screen
+                name="CategoryDetailSample"
+                component={CategoryDetailScreen}
+            />
 
             <Stack.Screen
                 name="PaperDialogSample"
