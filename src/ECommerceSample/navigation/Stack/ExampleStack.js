@@ -10,6 +10,11 @@ import PaperDialogSampleScreen from '../Screens/examples/PaperDialogSampleScreen
 import CategoryListScreen from '../Screens/examples/APISample/CategoryListScreen';
 import CategoryDetailScreen from '../Screens/examples/APISample/CategoryDetailScreen';
 import CategoryAddScreen from '../Screens/examples/APISample/CategoryAddScreen';
+import LottieSampleScreen from '../Screens/examples/LottieSampleScreen';
+import DeviceInfoSampleScreen from '../Screens/examples/DeviceInfoSampleScreen';
+import AddToDoScreen from '../Screens/examples/AddToDoScreen';
+import ToDoListScreen from '../Screens/examples/ToDoListScreen';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +22,26 @@ const ExampleStack = () => {
 
     return (
         <Stack.Navigator>
+
+            <Stack.Screen
+                name="AddToDo"
+                component={AddToDoScreen}
+            />
+
+            <Stack.Screen
+                name="ToDoList"
+                component={ToDoListScreen}
+            />
+            
+            <Stack.Screen
+                name="DeviceInfoSample"
+                component={DeviceInfoSampleScreen}
+            />
+
+            <Stack.Screen
+                name="LottieSample"
+                component={LottieSampleScreen}
+            />
 
             <Stack.Screen
                 name="CategoryAddSample"

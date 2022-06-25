@@ -16,7 +16,6 @@ export const getCartStore = async () => {
     try {
        
         const jsonValue = await AsyncStorage.getItem('cart')
-        console.log('getCartStore3');
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
         console.log('cart Storage get value ERROR!',e);

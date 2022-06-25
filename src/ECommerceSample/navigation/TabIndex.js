@@ -8,6 +8,7 @@ import ProfileStack from './Stack/ProfileStack'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { cartContext } from '../store/cartContext'
 import { getCartStore } from '../service/storage/cartStorage'
+import { useSelector } from 'react-redux'
 
 
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,10 @@ function TabIndex() {
 
 
     const { cart, setCart } = useContext(cartContext)
+
+    const todos = useSelector(todos => todos);
+
+    console.log("TODOS", todos);
 
     useEffect(() => {
 
@@ -35,6 +40,7 @@ function TabIndex() {
                 component={ExampleStack}
                 options={
                     {
+                        tabBarBadge: todos.length,
                         headerShown: false,
                         tabBarIcon: () => <Ionicons size={26} name='book-outline' />
 

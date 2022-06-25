@@ -1,4 +1,1 @@
-* ios cihaz seçimi
 * Lottie animasyon
-* Formik or hook form
-* use effect Samples???
