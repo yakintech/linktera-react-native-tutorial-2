@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { ActivityIndicator, Avatar, Button, Card, TextInput, Title } from 'react-native-paper';
 import { cartContext } from '../../../store/cartContext';
+import { setCartStore } from '../../../service/storage/cartStorage';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="hamburger" />
 
@@ -34,7 +35,9 @@ const ProductDetailScreen = ({ route }) => {
             //ürün sepette varsa ürünün sepetteki adedi bir arttırılır.
 
             cartProduct.quantity = cartProduct.quantity + count;
+            setCartStore([...cart])
             setCart([...cart])
+     
 
         }
         else {
@@ -46,7 +49,9 @@ const ProductDetailScreen = ({ route }) => {
                 unitPrice: item.unitPrice
             }
 
+            setCartStore([...cart, newCartProduct])
             setCart([...cart, newCartProduct]);
+     
         }
 
     }

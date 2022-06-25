@@ -2,6 +2,7 @@ import { View } from 'react-native'
 import React, { Fragment, useContext } from 'react'
 import { cartContext } from '../../../store/cartContext'
 import { Button, List, Text } from 'react-native-paper';
+import { setCartStore } from '../../../service/storage/cartStorage';
 
 const CartMainScreen = () => {
 
@@ -20,7 +21,15 @@ const CartMainScreen = () => {
 
     let newCartProducts = cart.filter(q => q.id != id);
 
+    setCartStore([...newCartProducts])
     setCart([...newCartProducts])
+
+  }
+
+  const emptyCart = () => {
+
+    setCartStore([])
+    setCart([])
 
   }
 
@@ -28,7 +37,7 @@ const CartMainScreen = () => {
     
     <View>
        <Text style={{fontSize:20, fontWeight:'bold'}}>Total Price: {totalPrice.toFixed(2)}</Text>
-       <Button onPress={() => setCart([])}>Remove All</Button>
+       <Button onPress={() => emptyCart()}>Remove All</Button>
 
       {
         cart && cart.map((item, key) => {

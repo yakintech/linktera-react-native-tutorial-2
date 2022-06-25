@@ -3,12 +3,13 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { ActivityIndicator, Button, List } from 'react-native-paper'
 import { cartContext } from '../../../store/cartContext'
+import { setCartStore } from '../../../service/storage/cartStorage'
 
 const ProductMainScreen = ({ navigation }) => {
 
     const { cart, setCart } = useContext(cartContext)
     const [products, setProducts] = useState([])
-    const [loading, setloading] = useState(false)
+    const [loading, setloading] = useState(true)
     //Web servisten productları axios ile çekip bir state e atayacağım.
 
     useEffect(() => {
@@ -52,7 +53,9 @@ const ProductMainScreen = ({ navigation }) => {
             //ürün sepette varsa ürünün sepetteki adedi bir arttırılır.
 
             cartProduct.quantity = cartProduct.quantity + 1;
+            setCartStore([...cart])
             setCart([...cart])
+    
 
         }
         else {
@@ -64,7 +67,9 @@ const ProductMainScreen = ({ navigation }) => {
                 unitPrice: item.unitPrice
             }
 
-            setCart([...cart, newCartProduct]);
+            setCartStore([...cart, newCartProduct])
+            setCart([...cart, newCartProduct])
+          
         }
 
     }
